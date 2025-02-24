@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYJU'S - Quizzes</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: auto;
+            transform: rotate(-15deg);
+            z-index: 1000;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: slideIn 0.8s ease-out both;
+        }
+
+        .page-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            width: 100%;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: scaleUp 0.6s ease-out both;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0056b3;
+        }
+
+        .quiz-item {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: scaleUp 0.6s ease-out both;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .quiz-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-item h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+    <div class="header">
+        <h1>Quizzes</h1>
+    </div>
+
+    <div class="page-content">
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('courses') }}">Courses</a>
+            <a href="{{ url_for('quizzes') }}">Quizzes</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </nav>
+
+        <section class="quiz-list">
+            <h2>Available Quizzes</h2>
+            <div class="quiz-item">
+                <h3>Quiz 1</h3>
+                <p>Description of Quiz 1.</p>
+                <a href="{{ url_for('quiz1') }}" class="btn">Take Quiz</a>
+            </div>
+            <div class="quiz-item">
+                <h3>Quiz 2</h3>
+                <p>Description of Quiz 2.</p>
+                <a href="{{ url_for('quiz2') }}" class="btn">Take Quiz</a>
+            </div>
+            <div class="quiz-item">
+                <h3>Quiz 3</h3>
+                <p>Description of Quiz 3.</p>
+                <a href="{{ url_for('quiz3') }}" class="btn">Take Quiz</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BYJU'S. All rights reserved.</p>
+
+    </footer>
+</body>
+</html>

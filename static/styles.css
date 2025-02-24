@@ -1,0 +1,267 @@
+.id-picture {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: auto;
+    z-index: 1000;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.id-picture:hover {
+    transform: scale(1.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes logoEntry {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(10px) rotate(-10deg);
+    }
+    100% {
+        transform: translateY(0) rotate(-15deg);
+        opacity: 1;
+    }
+}
+
+.logo {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: auto;
+    transform: rotate(-15deg);
+    z-index: 1000;
+    animation: logoEntry 1.5s ease-out forwards;
+}
+
+.header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #007bff;
+    color: white;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.page-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+    width: 100%;
+}
+
+nav {
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.course-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.course-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.btn-social img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.btn-social.google {
+    background-color: #4285F4;
+}
+
+.btn-social.facebook {
+    background-color: #1877F2;
+}
+
+.btn-social:hover {
+    opacity: 0.9;
+}
+
+.separator {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color: #666;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+    margin: auto;
+}
+
+.separator::before {
+    margin-right: 10px;
+}
+
+.separator::after {
+    margin-left: 10px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}

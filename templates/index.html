@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYJU'S</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        .featured-subjects, .learning-resources, .success-stories {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-grid, .resource-grid, .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .subject-card, .resource-card, .story-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .subject-card:hover, .resource-card:hover, .story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .subject-card img, .story-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: auto;
+            transform: rotate(-15deg);
+            z-index: 1000;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: slideIn 0.8s ease-out both;
+        }
+
+        .page-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            width: 100%;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: scaleUp 0.6s ease-out both;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0056b3;
+        }
+
+        .course-item {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: scaleUp 0.6s ease-out both;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+    <div class="header">
+        <h1>
+            Welcome to BYJU'S
+            {% if current_user.is_authenticated %}
+                <span class="welcome-user">, {{ current_user.id }}</span>
+            {% endif %}
+        </h1>
+        <p>Your personalized learning platform offering courses, quizzes, and interactive content to enhance your skills and knowledge.</p>
+    </div>
+
+    <div class="page-content">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/courses">Courses</a>
+            <a href="/quizzes">Quizzes</a>
+            {% if current_user.is_authenticated %}
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% endif %}
+            <a href="/subjects">Subjects</a>
+            <a href="/grades">Grade</a>
+            <a href="/scholarship">Scholarship</a>
+            <div class="dropdown">
+
+                <a href="#">More ▾</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('video_lectures') }}">Video Lectures</a>
+                    <a href="{{ url_for('ask_questions') }}">Ask Questions</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="course-list">
+            <div class="course-item">
+                <h2>Comprehensive Courses</h2>
+                <p>Explore our wide range of courses covering various subjects and skill levels.</p>
+            </div>
+            <div class="course-item">
+                <h2>Interactive Quizzes</h2>
+                <p>Test your knowledge with our engaging quizzes and track your progress.</p>
+            </div>
+            <div class="course-item">
+                <h2>Personalized Learning</h2>
+                <p>Get customized recommendations based on your learning patterns and goals.</p>
+            </div>
+            <div class="course-item">
+                <h2>Video Lectures</h2>
+                <p>Access online video lectures from the best teachers and experts in the field.</p>
+            </div>
+        </div>
+
+        <div class="featured-subjects">
+            <h2>Featured Subjects</h2>
+            <div class="subject-grid">
+        <div class="subject-card" onclick="selectSubject(this)">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Math" style="width: 60px; height: 60px;">
+            <h3>Mathematics</h3>
+            <p>Master concepts from basic arithmetic to advanced calculus.</p>
+        </div>
+        <div class="subject-card" onclick="selectSubject(this)">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Science" style="width: 60px; height: 60px;">
+            <h3>Science</h3>
+            <p>Explore physics, chemistry, and biology through interactive lessons.</p>
+        </div>
+        <div class="subject-card" onclick="selectSubject(this)">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="English" style="width: 60px; height: 60px;">
+            <h3>English</h3>
+            <p>Improve grammar, vocabulary, and communication skills.</p>
+        </div>
+        
+
+
+            </div>
+        </div>
+
+        <div class="learning-resources">
+            <h2>Learning Resources</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h3>Study Materials</h3>
+                    <p>Access comprehensive study guides and reference materials.</p>
+                </div>
+                <div class="resource-card">
+                    <h3>Practice Worksheets</h3>
+                    <p>Download printable worksheets for extra practice.</p>
+                </div>
+                <div class="resource-card">
+                    <h3>Interactive Tools</h3>
+                    <p>Use our calculators, converters, and virtual labs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-stories">
+            <h2>Student Success Stories</h2>
+            <div class="story-grid">
+                <div class="story-card">
+                    <img src="{{ url_for('static', filename='student1.jpg') }}" alt="Student 1">
+                    <h3>Rahul's Journey</h3>
+                    <p>"BYJU'S helped me improve my math scores by 40%!"</p>
+                </div>
+                <div class="story-card">
+                    <img src="{{ url_for('static', filename='student2.jpg') }}" alt="Student 2">
+                    <h3>Priya's Success</h3>
+                    <p>"The video lectures made complex concepts easy to understand."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BYJU'S. All rights reserved.</p>
+    </footer>
+</body>
+</html>

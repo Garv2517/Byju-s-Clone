@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYJU'S - Video Lectures</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: auto;
+            transform: rotate(-15deg);
+            z-index: 1000;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: slideIn 0.8s ease-out both;
+        }
+
+        .page-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            width: 100%;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: scaleUp 0.6s ease-out both;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0056b3;
+        }
+
+        .video-item {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: scaleUp 0.6s ease-out both;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-item h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+    <div class="header">
+        <h1>Video Lectures</h1>
+    </div>
+
+    <div class="page-content">
+
+        <nav>
+
+            <a href="/">Home</a>
+            <a href="/courses">Courses</a>
+            <a href="/quizzes">Quizzes</a>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        </nav>
+
+        <div class="video-item">
+            <h3>Lecture 1: Introduction</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <p>Introduction to the course and overview of topics.</p>
+        </div>
+
+        <div class="video-item">
+            <h3>Lecture 2: Advanced Concepts</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <p>Deep dive into advanced concepts and techniques.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BYJU'S. All rights reserved.</p>
+
+
+    </footer>
+</body>
+</html>

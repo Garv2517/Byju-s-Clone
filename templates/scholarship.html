@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarships - BYJU'S</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scholarship.css') }}">
+</head>
+<body>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+
+
+    <div class="header">
+        <h1>Scholarships</h1>
+        <p>Explore our scholarship opportunities to support your educational journey.</p>
+    </div>
+
+    <button class="sidebar-toggle collapsed">&#9664;</button>
+    <div class="main-content expanded">
+        <div class="sidebar collapsed">
+
+            <h3>Scholarship Resources</h3>
+            <ul>
+                <li><a href="https://www.scholarships.com/" target="_blank">Scholarships.com</a></li>
+                <li><a href="https://www.fastweb.com/" target="_blank">Fastweb</a></li>
+                <li><a href="https://www.chegg.com/scholarships" target="_blank">Chegg Scholarships</a></li>
+            </ul>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/courses">Our Courses</a></li>
+                <li><a href="/quizzes">Practice Quizzes</a></li>
+                <li><a href="/video_lectures">Video Lectures</a></li>
+            </ul>
+            <h3>Tips</h3>
+            <ul>
+                <li>Apply early for better chances</li>
+                <li>Tailor your applications</li>
+                <li>Check eligibility carefully</li>
+            </ul>
+        </div>
+
+        <div class="scholarship-container">
+            <div class="scholarship-item">
+                <h3>Merit-Based Scholarship</h3>
+                <p>For students with outstanding academic performance.</p>
+            </div>
+            <div class="scholarship-item">
+                <h3>Need-Based Scholarship</h3>
+                <p>Financial assistance for students from economically weaker sections.</p>
+            </div>
+            <div class="scholarship-item">
+                <h3>Sports Scholarship</h3>
+                <p>For students excelling in sports at state/national level.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BYJU'S. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.sidebar-toggle');
+            const mainContent = document.querySelector('.main-content');
+
+            toggleBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                toggleBtn.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+                toggleBtn.innerHTML = sidebar.classList.contains('collapsed') ? '&#9664;' : '&#9654;';
+            });
+        });
+    </script>
+</body>
+</html>
